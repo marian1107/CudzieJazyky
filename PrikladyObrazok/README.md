@@ -1,0 +1,1 @@
+Príklady nakreslených obrázok.
