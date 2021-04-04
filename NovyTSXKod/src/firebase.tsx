@@ -9,3 +9,4 @@ export const rebase = base.createClass(db);
 export const firebase = db;
 export const auth = Firebase.auth();
 export const profilove = app.storage().ref('profilove_obrazky');
+export const exercises = app.storage().ref('ulohy');

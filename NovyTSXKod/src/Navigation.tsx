@@ -49,6 +49,11 @@ const NavBar: React.FC<NavbarProps> = (props: any) => {
                         <NavLink style={{color: "black", textDecoration: 'none'}} id="profil" onClick={() => props.history.push('/profil')}>Profil</NavLink>
                     </NavItem>
                 }
+                {activeUser.user.logged === true &&
+                    <NavItem>
+                        <NavLink style={{color: "black", textDecoration: 'none'}} id="test" onClick={() => props.history.push('/testovanie')}>Trénovací režim</NavLink>
+                    </NavItem>
+                }
                 {activeUser.user.logged === false &&
                     <NavItem>
                         <NavLink style={{color: "black",textDecoration: 'none'}} id="login" onClick={() => {togglePopUp(showPopUp); console.log(showPopUp);
@@ -64,6 +69,7 @@ const NavBar: React.FC<NavbarProps> = (props: any) => {
                         }}>Odhlásenie</NavLink>
                     </NavItem>
                 }
+
                 
             </StyledNavbar>
         </StyledNavbar>
