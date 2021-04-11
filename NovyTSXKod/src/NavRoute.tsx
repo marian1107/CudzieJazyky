@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Home from './Pages/Home';
 import Profil from './Pages/Profil';
 import TestSide from './Pages/Traning/Test';
+import AddNew from './Pages/Add';
 
 const NavRoute = () => {    
     return(
@@ -12,6 +13,7 @@ const NavRoute = () => {
         <Route path='/' component = {NavBar}/>
         <Route path='/profil' component={Profil}/>
         <Route path='/testovanie' component={TestSide}/>
+        <Route path='/pridanie' component={AddNew}/>
         <Route exact path='/' component={Home} />        
         <Route path='/' component = {Footer}/>
         </>

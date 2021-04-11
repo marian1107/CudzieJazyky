@@ -54,6 +54,11 @@ const NavBar: React.FC<NavbarProps> = (props: any) => {
                         <NavLink style={{color: "black", textDecoration: 'none'}} id="test" onClick={() => props.history.push('/testovanie')}>Trénovací režim</NavLink>
                     </NavItem>
                 }
+                {activeUser.user.logged === true &&
+                    <NavItem>
+                        <NavLink style={{color: "black", textDecoration: 'none'}} id="test" onClick={() => props.history.push('/pridanie')}>Pridanie úlohy</NavLink>
+                    </NavItem>
+                }
                 {activeUser.user.logged === false &&
                     <NavItem>
                         <NavLink style={{color: "black",textDecoration: 'none'}} id="login" onClick={() => {togglePopUp(showPopUp); console.log(showPopUp);
