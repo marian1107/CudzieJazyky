@@ -29,14 +29,14 @@
 ## CCA globálne  145h ##
 
 ## Plány na ďalšie obdobie ##
-* 10. týždeň:
-** Prepracovať pripomienky ku Beta verzii. 
-** Vylepšovať dizajn.
-** Validácie vstupov.
-* 11. týždeň:
-** Doladiť chyby zbadané pri hlbšom testovaní. 
-** Vylepšovať dizajn.
-** Validácie vstupov.
+10. týždeň:
+* Prepracovať pripomienky ku Beta verzii. 
+* Vylepšovať dizajn.
+* Validácie vstupov.
+11. týždeň:
+* Doladiť chyby zbadané pri hlbšom testovaní. 
+* Vylepšovať dizajn.
+* Validácie vstupov.
 
 ## Náročné veci z nášho pohľadu ##
 
