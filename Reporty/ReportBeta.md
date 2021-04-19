@@ -12,10 +12,11 @@
 ## Naimplementované úlohy ##
 
 * Naprogramovaná a funkčná webstránka
+* Hotové prihlásenie a registrácia používateľa
 * Hotový Trénovací režim
 * Hotová profilová stránka s editovaním
-* Hotová stránka na pridanie nových úloh.
-* Hotový dizajn pre počítač.
+* Hotová stránka na pridanie nových úloh
+* Hotový dizajn pre počítač
 * Bežiaca aplikácia, verejne dostupná na internete
 
 ## Rozpracované úlohy ##
@@ -24,7 +25,7 @@
 
 ## Neimplmentované vobec ##
 
-* Už skoro všetko mám naimplementované. Treba len opraviť chyby a máličkosti.
+* Už skoro všetko mám naimplementované. Treba len opraviť chyby a maličkosti.
 
 ## CCA globálne  145h ##
 
@@ -36,7 +37,7 @@
 11. týždeň:
 * Doladiť chyby zbadané pri hlbšom testovaní. 
 * Vylepšovať dizajn.
-* Validácie vstupov.
+* Validácia vstupov.
 
 ## Náročné veci z nášho pohľadu ##
 
