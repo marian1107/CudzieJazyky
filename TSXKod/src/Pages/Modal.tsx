@@ -35,6 +35,8 @@ const PopUp = (props) => {
 
     const [uid, setPouz] = useState("");
 
+    const [error, setError] = useState("");
+
     // console.log(useSelector((state: State) => state));
     const activeUser =  useSelector((state: State) => state);
     console.log(activeUser);
@@ -49,6 +51,9 @@ const PopUp = (props) => {
         auth.signInWithEmailAndPassword(email, password).then((result)=>{
             // const str = `"users/"${result.user?.uid}`  
             // console.log(str);
+
+            // console.log(result.state);
+            
             const ref = database.collection('users');  
             console.log(ref.get().then(function (users){
                 
@@ -78,11 +83,31 @@ const PopUp = (props) => {
 
                 // history.push("/profile");
                 
+            }).catch(e=>{
+                // console.log(e); 
+                if (e.code === "auth/user-not-found"){
+                    setError("Používateľ neexistuje v databáze");
+                }
+                else if (e.code === "auth/invalid-email"){
+                    setError("Musíte zadať platný E-mail");
+                }
+                else if (e.code === "auth/wrong-password"){
+                    setError("Zlé heslo");
+                }
+                // alert(e); 
+                console.log(e.toString());
+                
             });        
                 
     } 
 
     const reg = () => {
+        const prezbez = prezivka.replace(/\s+/g, '');
+        if (prezbez === ""){
+            setError("Prezývka musí obsahovať aspoň jeden charakter");
+            return;
+        }
+
         auth.createUserWithEmailAndPassword(email, password).then((res) => {
             const data ={
               prezivka,
@@ -92,11 +117,23 @@ const PopUp = (props) => {
                 dispatch(registrate({uid: res.user?.uid, ...data}));
                 console.log(user);
                 
-                }).catch(error => {
-                    console.log(error);
+                }).catch(err => {
+                    console.log(err);
                 });
-            }).catch(error => {
-                console.log(error);                
+            }).catch(e => {
+                // console.log(e);
+                console.log(e);               
+                
+                if (e.code === "auth/invalid-email"){
+                    setError("Musíte zadať platný E-mail");
+                }
+                else if (e.code === "auth/email-already-in-use"){
+                    setError("Zadaný E-mail už existuje v databáze");
+                }
+                else if (e.code === "auth/weak-password"){
+                    setError("Príliš ľahké heslo. Musí mať dĺžku aspoň 6");
+                }
+
             });
         
     } 
@@ -139,6 +176,9 @@ const PopUp = (props) => {
                             </div>
                             </Col>
                         </Row>
+                        <Row className="m-t-10">
+                            <div>{ error }</div>
+                        </Row>
                         <Col className="m-t-10" style={{display:"flex", justifyContent:"space-between"}}>
                             <Button onClick={loginfunc}>Potvrdiť</Button>
                             <Button onClick={close}>Späť</Button>
@@ -168,6 +208,9 @@ const PopUp = (props) => {
                                 <Input type="text" value={prezivka} onChange={(e) => setPrezivka(e.target.value)} />
                             </div>
                             </Col>
+                        </Row>
+                        <Row className="m-t-10">
+                            <div>{ error }</div>
                         </Row>
                         <Col className="m-t-10" style={{display:"flex", justifyContent:"space-between"}}>                            
                             <Button onClick={reg}>Reg</Button>
