@@ -214,7 +214,11 @@ const TestSide = () => {
           }).then(() => {history.push("/")});
     }
 
-    
+    const options = {
+        enableTouchEvents: true,
+        enableMouseEvents: true,
+        delayTouchStart: 5
+        }
 
     return (
         <>
@@ -260,7 +264,7 @@ const TestSide = () => {
                 {isMobile &&    
                 chosen &&   
                 <>     
-                    <DndProvider backend={TouchBackend}>
+                    <DndProvider backend={TouchBackend} options={options}>
                         <Exercise curr={curr} items= {curritems} setItems={setCurrItems} nextQuestion={nextQuestion} setUlohaPokus={setUlohaPokus} endClick={endClick}/> 
                     </DndProvider>
                     

@@ -19,6 +19,8 @@ const AddNew = () => {
     const [uploading, setUploading] = useState(false);
     const activeUser =  useSelector((state: State) => state);
 
+    const [error2, setError] = useState("");
+
     const history = useHistory();
 
     const getPocet = () =>{
@@ -112,6 +114,24 @@ const AddNew = () => {
         
         const obrazky = getObrID();
         console.log(obrazky);
+
+        if (nazov.replace(/\s+/g, '') === ""){
+            setError("Názov musí obsahovať aspoň 1 charakter");
+            return;
+        }
+
+        if (type === "uhadaj" && obrazky.length !== 2){
+            setError("Úlohy typu uhádaj musia obsahovať presne 2 obrázky");
+            console.log(obrazky.length);
+            
+            return;
+        }
+        if (type === "slovosled" && obrazky.length < 2){
+            setError("Úlohy typu slovosled musia obsahovať aspoň 2 obrázky");
+            console.log(obrazky.length);
+            
+            return;
+        }
         
         const data ={
             jazyk,
@@ -198,7 +218,7 @@ const AddNew = () => {
                     }
                                             
                 </FormGroup>
-                
+                <div>{ error2 }</div>
                 <Button onClick={() => pridaj()}>Pridaj</Button>
 
                 

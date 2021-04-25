@@ -138,6 +138,8 @@ h1{
   flex-direction: column;
   align-items: center;
 }
+
+
 .Test>div{
   width: 80%;
   margin-top: 50px;
@@ -192,4 +194,32 @@ h1{
 
 .Test>h1{
   margin-top: 50px;
+}
+
+@media all and (max-width: 760px) {
+	.Test{
+    height: 100%;
+    
+  }
+ 
+  .second-column{
+    
+    
+    height: 100%;
+    
+    
+   
+  }
+
+
+  .Test>div{
+    width: 90%;
+  }
+
+  .places{
+    align-items: center;
+    flex-direction: row;
+   
+    flex-flow: wrap;
+  }
 }

@@ -16,6 +16,8 @@ const Profil = () => {
 
     const [newprez, setPrez] = useState("");
 
+    const [error2, setError] = useState("");
+
     useEffect(() => {
         let str = "";
         if (activeUser.user.user.obr === undefined){
@@ -46,11 +48,19 @@ const Profil = () => {
     }
 
     const submitUpdatePrez = () => {
+        const prezbez = newprez.replace(/\s+/g, '');
+        if (prezbez === ""){
+            setError("Prezývka musí obsahovať aspoň jeden charakter");
+            return;
+        }
+        setError("");
+
         const ref = database.collection('users'); 
         ref.doc(activeUser.user.user.uid).update({
             prezivka: newprez,
         }).then( () => {
-            dispatch(update({uid: activeUser.user.user.uid, prezivka: newprez, obr: activeUser.user.user.uid}))
+            dispatch(update({uid: activeUser.user.user.uid, prezivka: newprez, obr: activeUser.user.user.uid}));
+
         }           
         ).catch(error => console.log(error)
         )
@@ -77,6 +87,7 @@ const Profil = () => {
     } */
 
     const handleUploadStart = () =>{
+
         setUploading(true);
       }
 
@@ -98,6 +109,16 @@ const Profil = () => {
             console.log(str);
             setProfileImg(str);
         }).catch(()=>setProfileImg("avatar.jpg"));
+
+        const ref = database.collection('users'); 
+        ref.doc(activeUser.user.user.uid).update({
+            obr: activeUser.user.user.uid,
+        }).then( () => {
+            dispatch(update({uid: activeUser.user.user.uid, prezivka: activeUser.user.user.prezivka, obr: activeUser.user.user.uid}));
+        }           
+        ).catch(error => console.log(error)
+        )
+
       }
 
     return (
@@ -126,6 +147,9 @@ const Profil = () => {
                     <FormGroup>
                         <Label for="exampleEmail">Prezývka</Label>
                         <Input type="text" name="email" id="exampleEmail" onChange={(e) => setPrez(e.target.value)} placeholder={`${activeUser.user.user.prezivka}` } />
+                        <div>
+                            <div>{ error2 }</div>
+                        </div>
                         <Button onClick={submitUpdatePrez}>Submit</Button>
                     </FormGroup>
                     <FormGroup>

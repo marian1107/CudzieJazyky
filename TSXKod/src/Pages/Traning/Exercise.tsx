@@ -119,7 +119,7 @@ const Exercise = ({items, curr, setItems, nextQuestion, setUlohaPokus, endClick}
             <h1>Uhádaj slovo: {curr.nazov}</h1>
         }
         
-        <div className="places">
+        <div className="places" >
         {curr.obrazky.filter(item=>item)
             .map((item) => (
                 
@@ -128,7 +128,7 @@ const Exercise = ({items, curr, setItems, nextQuestion, setUlohaPokus, endClick}
                             uid={String(item)}
                             className={`Column, ${item}`}
                             type="column"
-                            style={{height: '100px', display: "flex", border:"solid", borderWidth:"1px", alignItems:"center", justifyContent:"center", width:"120px", backgroundColor:answer[item]}}
+                            style={{marginTop: "10px",height: '100px', width:"120px", display: "flex", border:"solid", borderWidth:"1px", alignItems:"center", justifyCotent:"space-around", backgroundColor:answer[item]}}
                 >
                     {returnItemsForColumn(String(item))}
                 </Column>
