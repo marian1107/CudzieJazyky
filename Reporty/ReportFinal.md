@@ -2,7 +2,7 @@
 
 ## Cudzie jazyky ##
 
-## Finálna verzia verzia projektu ##
+## Finálna verzia projektu ##
 
 ## Linky ##
 
